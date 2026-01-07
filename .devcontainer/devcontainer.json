@@ -1,0 +1,25 @@
+{
+  "name": "Python Dev",
+  "image": "python:3.13",
+  "containerEnv": {
+    "ANTHROPIC_API_KEY": "${localEnv:ANTHROPIC_API_KEY}"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.black-formatter",
+        "ms-python.isort",
+        "ms-python.flake8",
+        "anthropic.claude-code",
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ],
+      "settings": {
+        "claudeCode.disableLoginPrompt": true
+      }
+    }
+  },
+  "postCreateCommand": "mkdir -p ~/.claude && echo '{\"apiKeyHelper\": \"/workspaces/sandboxed/.claude-api-helper.sh\"}' > ~/.claude/settings.json && pip install --user -r requirements.txt || true"
+}
